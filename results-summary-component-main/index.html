@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Frontend Mentor | Results summary component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div>
+    <section id="result" class="bi-gradient1">
+      <p class="s18 w500 light-lavender">
+        Your Result
+      </p>
+
+      <div class="circle bi-gradient2">
+        <h1 class="s56 w800 white">76</h1>
+        <p class="s16 w500 light-lavender">of 100</p>
+      </div>
+
+      <h3 class="s24 w700 white">Great</h3>
+      <p class="s16 w500 controlled light-lavender">You scored higher than 65% of the people who have taken these tests.</p>
+    </section>
+
+    <section id="summary">
+      <h4 class="s18 w700 gray-blue">Summary</h4>
+
+      <div id="items">
+
+      </div>
+
+      <script>
+        const summarySection = document.getElementById('summary')
+        const items = document.getElementById('items')
+        const bgColors = ['red-lighten', 'orangey-lighten', 'green-lighten', 'cobalt-lighten']
+        const txtColors = ['light-red', 'orangey-yellow', 'green-teal', 'cobalt-blue']
+
+        async function load() {
+          const charge = await fetch('./data.json')
+          const data = await charge.json()
+          data.forEach((element, i) => {
+            const itemSummary = document.createElement('div')
+            itemSummary.classList.add('row', 'item', `bg-${bgColors[i]}`)
+            const title = document.createElement('span')
+            title.classList.add('s16', 'w500', txtColors[i])
+            const score = document.createElement('p')
+            score.classList.add('s16', 'w700', 'light-lavender')
+            const icon = document.createElement('img')
+            const wrap = document.createElement('div')
+            wrap.classList.add('row')
+            title.innerHTML = element.category
+            score.innerHTML = `<span class='gray-blue'>${element.score}</span>  / 100`
+            icon.setAttribute('src', element.icon)
+            icon.setAttribute('alt', 'some awesome icon')
+            wrap.append(icon, title)
+            itemSummary.append(wrap, score)
+            items.appendChild(itemSummary)
+          })
+          const button = document.createElement('button')
+          button.classList.add('bg-gray-blue', 'pale-blue', 's18', 'w500')
+          button.setAttribute('type', 'button')
+          button.innerHTML = 'Continue'
+          summarySection.appendChild(button)
+        }
+
+        load()
+      </script>
+    </section>
+
+    <!-- <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+  </div>
+</body>
+</html>

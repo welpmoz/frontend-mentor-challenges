@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap');
+
+
+$light-red: #FF5757;
+$light-red-opacity: rgba($light-red, 5%);
+$orangey-yellow: #FFB01F;
+$orangey-yellow-opacity: rgba($orangey-yellow, 5%);
+$green-teal: #00BD91;
+$green-teal-opacity: rgba($green-teal, 5%);
+$cobalt-blue: #1125D4;
+$cobalt-blue-opacity: rgba($cobalt-blue, 5%);
+$light-state-blue: #7857FF;
+$light-royal-blue: #2E2BE9;
+$violet-blue: #4E21CA;
+$white: #FFFFFF;
+$pale-blue: #EBF1FF;
+$light-lavender: #C8C7FF;
+$dark-gray-blue: #303B5A;
+$state-to-royal: linear-gradient(180deg, $light-state-blue, $light-royal-blue);
+$violet-to-royal: linear-gradient(180deg, $violet-blue, $light-royal-blue);
+// definir degradados
+
+
+// tamaño de letra disponible
+$size56: 5.6rem;
+$size18: 1.8rem;
+$size16: 1.6rem;
+$size24: 2.4rem;
+
+// pesos
+$medium: 500;
+$bold: 700;
+$extrabold: 800;
+
+// pesos de linea
+
+// espaciado de letra
+$ls-1: 0.01em;
+
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  font-family: 'Hanken Grotesk', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$font-sizes: (
+  "s56": $size56,
+  "s18": $size18,
+  "s16": $size16,
+  "s24": $size24
+);
+
+$letter-spacing: (
+  "ls-1": $ls-1,
+);
+
+$weights: (
+  "w500": $medium,
+  "w700": $bold,
+  "w800": $extrabold
+);
+
+$colors: (
+  "light-red": $light-red,
+  "red-lighten": $light-red-opacity,
+  "orangey-yellow": $orangey-yellow,
+  "orangey-lighten": $orangey-yellow-opacity,
+  "green-teal": $green-teal,
+  "green-lighten": $green-teal-opacity,
+  "cobalt-blue": $cobalt-blue,
+  "cobalt-lighten": $cobalt-blue-opacity,
+  "state-blue": $light-state-blue,
+  "royal-blue": $light-royal-blue,
+  "violet-blue": $violet-blue,
+  "white": $white,
+  "pale-blue": $pale-blue,
+  "light-lavender": $light-lavender,
+  "gray-blue": $dark-gray-blue,
+  "gradient1": $state-to-royal,
+  "gradient2": $violet-to-royal
+);
+
+@each $key, $val in $weights {
+  .#{$key} {
+    font-weight: $val;
+  }
+}
+
+@each $key, $val in $font-sizes {
+  .#{$key} {
+    font-size: $val;
+  }
+}
+
+@each $key, $val in $letter-spacing {
+  .#{$key} {
+    letter-spacing: $val;
+  }
+}
+
+@each $key, $val in $colors {
+  .#{$key} {
+    color: $val;
+  }
+
+  .bg-#{$key} {
+    background-color: $val;
+  }
+
+  .bd-#{$key} {
+    border-color: $val;
+  }
+
+  .bi-#{$key} {
+    background-image: $val;
+  }
+}
+
+@mixin for-desktop {
+  @media (min-width: 740px) {
+    @content;
+  }
+}
+
+body {
+  & > div {
+    min-height: 100vh;
+
+    @include for-desktop() {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #result {
+      text-align: center;
+      padding: 2.4rem 0 4rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 0 0 3.2rem 3.2rem;
+
+      @include for-desktop() {
+        padding: 3.8rem 6rem 5.6rem 6rem;
+        border-radius: 3.2rem;
+      }
+
+      .circle {
+        width: 14rem;
+        height: 14rem;
+        border-radius: 50%;
+        margin: 2.4rem 0 2.4rem 0;
+        padding: 2.5rem 0 2.2rem 0;
+      }
+
+      h3 {
+        margin-bottom: 0.8rem;
+      }
+
+      p:last-of-type {
+        max-width: 25.3rem;
+      }
+    }
+
+    #summary {
+      padding: 2.4rem 3rem 3.4rem 3rem;
+
+      #items {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 2.5rem 0 2.5rem 0;
+
+        .row {
+          display: flex;
+          align-items: center;
+
+          &>span {
+            margin-left: 1.5rem;
+          }
+        }
+
+        .item {
+          border-radius: 1rem;
+          justify-content: space-between;
+          padding: 2rem 1.8rem;
+
+          @include for-desktop() {
+            min-width: 28.8rem;
+          }
+        }
+      }
+
+      button {
+        width: 100%;
+        padding: 1.6rem 0;
+        border-radius: 4.5rem;
+        border: none;
+
+        &:hover {
+          background-image: $violet-to-royal;
+        }
+      }
+    }
+  }
+}
+
+
+
+
