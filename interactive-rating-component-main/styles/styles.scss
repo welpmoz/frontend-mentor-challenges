@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+$orange: #FB7413;
+$white: #FFFFFF;
+$light-grey: #959EAC;
+$medium-grey: #7C8798;
+$dark-blue: #252D37;
+$very-dark-blue: #121417;
+$main-background: #1B222C;
+
+$bold: 700;
+$regular: 400;
+
+$txt-27: 2.7rem;
+$txt-15: 1.5rem;
+$txt-24: 2.4rem;
+$txt-14: 1.4rem;
+
+$line-height19: 1.9rem;
+$line-height30: 3rem;
+$line-height18: 1.8rem;
+$line-height34: 3.4rem;
+
+$letter-spacing12: 0.12em;
+$letter-spacing13: 0.13em;
+
+$width-mobile: 37.5rem;
+$height-mobile: 66.7rem;
+$width-desktop: 144rem;
+$height-desktop: 80rem;
+
+
+@mixin for-desktop {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Overpass', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+#root {
+  background-color: $very-dark-blue;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #thank-you {
+    background-color: $main-background;
+    border-radius: 3rem;
+    padding: 3.2rem 2.7rem 4.2rem 2.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include for-desktop() {
+      padding: 4.5rem 3.8rem 5.1rem 3.8rem;
+    }
+
+    & > img {
+      width: 14.4rem;
+
+      @include for-desktop() {
+        width: 16.2rem;
+      }
+    }
+
+    & > p:first-of-type {
+      color: $orange;
+      font-size: $txt-14;
+      line-height: $line-height18;
+      padding: 0.8rem 1.2rem;
+      background-color: $dark-blue;
+      border-radius: 7rem;
+      margin-top: 2.3rem;
+
+      @include for-desktop() {
+        margin-top: 3.2rem;
+        font-size: $txt-15;
+        line-height: $line-height19;
+        padding: 0.8rem 2rem 0.5rem 2rem;
+      }
+    }
+
+    & > h3 {
+      color: $white;
+      font-size: $txt-24;
+      font-weight: $bold;
+      line-height: $line-height30;
+      margin: 2.7rem 0 1.3rem 0;
+
+      @include for-desktop() {
+        margin: 3.5rem 0 1.3rem 0;
+        font-size: $txt-27;
+      }
+    }
+
+    & > p:last-of-type {
+      color: $light-grey;
+      font-size: $txt-14;
+      line-height: $line-height18;
+      max-width: 27rem;
+      text-align: center;
+
+      @include for-desktop() {
+        font-size: $txt-15;
+        line-height: $line-height19;
+        max-width: 33.6rem;
+      }
+    }
+  }
+
+  #feedback {
+    background-color: $main-background;
+    border-radius: 3rem;
+    padding: 2.4rem 2.4rem 3.2rem 2.4rem;
+
+    @include for-desktop() {
+      padding: 3.2rem 3.4rem;
+    }
+
+    & > h3 {
+      font-size: $txt-24;
+      font-weight: $bold;
+      line-height: $line-height30;
+      color: $white;
+      margin: 1.9rem 0 1.3rem 0;
+
+      @include for-desktop() {
+        margin: 3.2rem 0 1.4rem 0;
+        font-size: $txt-27;
+        line-height: $line-height34;
+      }
+    }
+
+    & > p {
+      max-width: 27.5rem;
+      color: $light-grey;
+      font-size: $txt-14;
+      line-height: $line-height18;
+      font-weight: $regular;
+
+      @include for-desktop() {
+        font-size: $txt-15;
+        line-height: $line-height19;
+        max-width: 32.4rem;
+      }
+    }
+
+    & > .numbers {
+      display: flex;
+      justify-content: space-between;
+      margin: 2.9rem 0 2.5rem 0;
+
+      @include for-desktop() {
+        margin: 2.4rem 0;
+      }
+    }
+
+    & .circle {
+      border-radius: 50%;
+      background-color: $dark-blue;
+      width: 4.1rem;
+      height: 4.1rem;
+      padding: 1.2rem 0;
+      text-align: center;
+      font-size: $txt-14;
+      line-height: $line-height18;
+      color: $medium-grey;
+      cursor: pointer;
+    }
+
+    & .circle:hover {
+      background-color: $light-grey;
+      color: $white;
+    }
+
+    & .selected {
+      background-color: $orange;
+      color: white;
+    }
+
+    & > button {
+      width: 100%;
+      background-color: $orange;
+      color: $white;
+      padding: 1.5rem 0 1.2rem 0;
+      text-align: center;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 7rem;
+      cursor: pointer;
+
+      @include for-desktop() {
+        font-size: $txt-15;
+        line-height: $line-height19;
+      }
+    }
+  }
+}
